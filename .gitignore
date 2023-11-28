@@ -1,7 +1,10 @@
 planning-notes.txt
 Website-Files.ipynb
-
-*.sqlite3
-__pycache__/
-
 wdbinsite/wdbinsite/static/files/
+
+*.DS_Store
+*.sqlite3
+
+__pycache__/
+.ipynb_checkpoints/
+
