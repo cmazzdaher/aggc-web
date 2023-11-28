@@ -1,0 +1,53 @@
+{% load static bootstrap4 %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Meta -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Site Title -->
+  <title>{% block title %}{% endblock %}</title>
+
+  <!-- CSS -->
+  {% bootstrap_css %}
+  <link href="{% static 'css/newstyle.css' %}" rel="stylesheet">
+  {% block additional_css %}{% endblock %}
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Jura:300,400,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap" rel="stylesheet">
+</head>
+
+<body data-spy="scroll" data-target="#nav-scroll">
+
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <!-- Navigation menu -->
+        {% include 'navbar_content.html' %}
+    </div><!-- / container -->
+  </nav><!-- / navbar -->
+  
+
+  {% block header-content %}{% endblock %}
+  <div class="container pt-40">
+    {% block content %}{% endblock %}
+  </div>
+
+</body>
+
+<!-- Bootstrap JS -->
+{% bootstrap_javascript jquery='True' %}
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://kit.fontawesome.com/d20aaf8273.js" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+{% block additional_js %}{% endblock %}
+</html>

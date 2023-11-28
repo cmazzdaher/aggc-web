@@ -1,0 +1,148 @@
+/*---------- sections ----------*/
+
+section {
+    padding: 30px 0;
+}
+
+section.big {
+    padding: 50px 0;
+}
+
+section.lg {
+    padding: 100px 0;
+}
+
+section.xl {
+    padding: 200px 0;
+}
+
+section.fh {
+    height: 100vh;
+}
+
+/*-------- headers --------*/
+
+header {
+    padding: 30px 0;
+}
+
+header.big {
+    padding: 50px 0;
+}
+
+header.lg {
+    padding: 100px 0;
+}
+
+header.xl {
+    padding: 200px 0;
+}
+
+header.fh {
+    height: 100vh;
+}
+
+.documentation-demo img {
+    margin-top: 30px;
+    border: 10px solid $white;
+    border-radius: 10px;
+}
+
+/*-------- end of headers --------*/
+
+
+
+/*------- sidebar -------*/
+
+.sidebar-box {
+    padding: 30px;
+    border: 2px solid $light-grey-dark;
+}
+
+/*------- end of sidebar -------*/
+
+
+
+/*------- footers -------*/
+
+footer {
+    background: $light-grey;
+    padding: 2rem 0;
+}
+
+footer p {
+    color: $title-color;
+    margin-bottom: 0;
+}
+
+footer.big {
+    padding: 3rem 0;
+}
+
+footer.light {
+    background: $secondary;
+}
+
+footer.mid {
+    background: $secondary-dark;
+}
+
+footer.dark {
+    background: $dark-grey;
+}
+
+footer.dark p {
+    color: $light-grey;
+}
+
+footer.dark a {
+    color: $white;
+}
+
+footer.dark a:hover {
+    color: $grey;
+}
+
+.footer-left-area {
+    text-align: left;
+}
+
+.footer-right-area {
+    text-align: right;
+}
+
+footer.dark.bg-primary a, footer.dark.bg-primary-dark a {
+    color: $white;
+}
+
+footer.dark.bg-primary a:hover, footer.dark.bg-primary-dark a:hover {
+    opacity: 0.75;
+}
+
+.footer-link, .footer-link:focus {
+    font-weight: $regular;
+    color: $inverse-color;
+}
+
+.footer-link:hover {
+    color: $inverse-color;
+    opacity: 0.6;
+}
+
+.dark .footer-link {
+    color: $secondary;
+}
+
+.dark .footer-link:hover {
+    color: $secondary;
+    opacity: 0.6;
+}
+
+.footer-logo {
+    max-width: 100px;
+    margin-bottom: 20px;
+}
+
+/*------- end of footers -------*/
+
+/*---------- end of sections ----------*/

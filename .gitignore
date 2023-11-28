@@ -1,0 +1,7 @@
+planning-notes.txt
+Website-Files.ipynb
+
+*.sqlite3
+__pycache__/
+
+wdbinsite/wdbinsite/static/files/

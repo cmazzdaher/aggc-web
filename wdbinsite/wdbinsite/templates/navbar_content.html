@@ -1,0 +1,12 @@
+<!-- ml-auto: pushes the bar to the right (should be left but whatever) -->
+<ul class="navbar-nav ml-auto">
+  
+  <li class="nav-item {% if request.resolver_match.url_name == 'home' %}active{% endif %}">
+    <a class="nav-link" href="{% url 'home' %}">Home</a>
+  </li>
+  
+  <li class="nav-item {% if request.resolver_match.namespace == 'data' %}active{% endif %}">
+    <a class="nav-link" href="{% url 'data:data' %}">Data Table</a>
+  </li>
+  
+</ul>

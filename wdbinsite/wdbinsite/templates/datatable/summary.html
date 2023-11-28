@@ -1,0 +1,242 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ object_id }} -- Summary{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col col-sm-2">
+      {% include 'datatable/source_navbar_content.html' %}
+    </div>
+    
+	<div class="col-lg-9" style="padding-left: 40px;">
+	 <h1> {{object_id}}</h1>
+	  <br>
+      <h3>General Overview of Spectro-Photometric Data</h3>
+    </div>
+	
+	
+	<div class="row p-y-15">
+	  
+      <h6> System Parameters from Anguiano+2022 Catalog + Photometric/Astrometric Data</h6>
+	  
+	  <table id='valueadded' class="myline mystripes-td ti-15" style="width:85%; margin-top: 15px; margin-bottom: 25px;">
+  	   <tbody>
+		  
+          <tr class="prespace">
+	        <th>WD <i>T</i>   [K]</th>
+	        <th>WD Radius   [R<sub>&CirclePlus;</sub>]</th>
+	        <th>SED Prim. <i>T</i>   [K]</th>
+	        <th>Prim. Radius   [R<sub>&#10752;</sub>]</th>
+            <th>&Delta;RV<sub>max</sub>   [km s<sup>-1</sup>]</th>
+  		    <th>&Delta;RV<sub>max, S/N>40</sub>   [km s<sup>-1</sup>]</th>
+          </tr>
+		  
+	      <tr>
+		    <td>{{borja.0.TWD}}</td>
+			<td>{{borja.0.RWD}}</td>
+			<td>{{borja.0.TRed}}</td>
+			<td>{{borja.0.RRed}}</td>
+			<td>{{borja.0.DRVM}}</td>
+			<td>{{borja.0.DRVM_SNR40}}</td>
+		  </tr>
+		  
+	    </tbody>
+      </table>
+	  
+	  <table id='basics' class="myline mystripes-td ti-13" style="width:85%; margin-bottom: 50px;">
+		<tbody>
+		  <tr class="prespace">
+  	        <th>RA</th>
+  	        <th>Dec</th>
+  			<th>Gaia ID</th>
+  		    <th>Parallax   [mas]</th>
+            <th>&mu;<sub>RA</sub>   [mas/yr]</th>
+  		    <th>&mu;<sub>Dec</sub>   [mas/yr]</th>
+  		    <th>Bailer-Jones <i>d</i>   [pc]</th>
+		  </tr>
+		  
+	      <tr>
+			<td>{{allStar.0.RA}}</td>
+			<td>{{allStar.0.Dec}}</td>
+			<td>{{allStar.0.Gaia_ID}}</td>
+			<td>{{allStar.0.Gaia_para}}</td>
+			<td>{{allStar.0.Gaia_pmra}}</td>
+			<td>{{allStar.0.Gaia_pmdec}}</td>
+			<td>{{allStar.0.Gaia_BJd}}</td>
+		  </tr>
+		  
+          <tr class="space">
+		  </tr>
+		  
+		  <tr>
+	        <th>Gaia B<sub>p</sub></th>
+			<th>Gaia G</th>
+			<th>Gaia R<sub>p</sub></th>
+			<th>2MASS J</th>
+	        <th>2MASS H</th>
+			<th>2MASS K<sub>s</sub></th>
+          </tr>
+		  
+	      <tr>
+		    <td>{{allStar.0.Gaia_bp}}</td>
+			<td>{{allStar.0.Gaia_G}}</td>
+			<td>{{allStar.0.Gaia_rp}}</td>
+			<td>{{allStar.0.J}}</td>
+			<td>{{allStar.0.H}}</td>
+			<td>{{allStar.0.K}}</td>
+		  </tr>
+		   
+		</tbody>
+	  </table>
+	  
+	   <h6 style="margin-top: 10px; margin-bottom: -20px"> All allStar Entries and Their Associated allVisit Entries:</h6>
+	  {% for i in allStar %}
+		
+		<table id='apogee_basics' class="myline mystripes-td ti-13" style="width:100%; margin-top: 50px; margin-bottom: 18px;">
+		  <tbody>
+  	        <tr class="prespace">
+		      <th>Field</th>
+			  <th>Loc ID</th>
+              <th>Telescope</th>
+		      <th>S/N</th>
+		      <th>&chi;<sup>2</sup></th>
+			  <th>Teff   [K]</th>
+			  <th>log(g)</th>
+	          <th>vsin(i)   [km s<sup>-1</sup>]</th>
+			  <th>[Fe/H]</th>
+			  <th>[M/H]</th>
+			  <th>[&alpha;/Fe]</th>
+  	        </tr>
+		    <tr>
+			  <td>{{i.field}}</td>
+			  <td>{{i.LocID}}</td>
+			  <td>{{i.telescope}}</td>
+			  <td>{{i.SNR}}</td>
+			  <td>{{i.chi2}}</td>
+		      <td>{{i.Teff}}</td>
+			  <td>{{i.logg}}</td>
+			  <td>{{i.vsini}}</td>
+			  <td>{{i.Fe_H}}</td>
+			  <td>{{i.M_H}}</td>
+			  <td>{{i.alpha_Fe}}</td>
+			</tr>
+			
+		  </tbody>
+		 </table>
+		  
+	 <table id='apogee_chems' class="myline mystripes-td ti-12" style="width:95%; margin-bottom: 18px;">
+  	  <tbody>
+		  
+        <tr>
+		  <th>[C/H]</th>
+		  <th>[CI/H]</th>
+          <th>[N/H]</th>
+		  <th>[O/H]</th>
+		  <th>[Na/H]</th>
+		  <th>[Mg/H]</th>
+		  <th>[Al/H]</th>
+		  <th>[Si/H]</th>
+          <th>[P/H]</th>
+		  <th>[S/H]</th>
+		  <th>[K/H]</th>
+		  <th>[Ca/H]</th>
+		  <th>[Ti/H]</th>
+         </tr>
+		  
+		  <tr>
+		    <td>{{i.C_H}}</td>
+			<td>{{i.CI_H}}</td>
+			<td>{{i.N_H}}</td>
+			<td>{{i.O_H}}</td>
+			<td>{{i.Na_H}}</td>
+			<td>{{i.Mg_H}}</td>
+		    <td>{{i.Al_H}}</td>
+			<td>{{i.Si_H}}</td>
+			<td>{{i.P_H}}</td>
+			<td>{{i.S_H}}</td>
+			<td>{{i.K_H}}</td>
+			<td>{{i.Ca_H}}</td>
+			<td>{{i.Ti_H}}</td>
+		  </tr>
+		  
+          <tr class="space">
+		  </tr>
+		  
+          <tr>
+  		    <th>[TiII/H]</th>
+            <th>[V/H]</th>
+  		    <th>[Cr/H]</th>
+  		    <th>[Mn/H]</th>
+  		    <th>[Co/H]</th>
+  		    <th>[Ni/H]</th>
+  		    <th>[Cu/H]</th>
+            <th>[Ge/H]</th>
+  		    <th>[Rb/H]</th>
+  		    <th>[Ce/H]</th>
+  		    <th>[Nd/H]</th>
+			<th>[Yb/H]</th>
+           </tr>
+		   
+ 		  <tr>
+ 		    <td>{{i.TiII_H}}</td>
+ 			<td>{{i.V_H}}</td>
+ 			<td>{{i.Cr_H}}</td>
+ 			<td>{{i.Mn_H}}</td>
+ 			<td>{{i.Co_H}}</td>
+ 			<td>{{i.Ni_H}}</td>
+ 		    <td>{{i.Cu_H}}</td>
+ 			<td>{{i.Ge_H}}</td>
+ 			<td>{{i.Rb_H}}</td>
+ 			<td>{{i.Ce_H}}</td>
+ 			<td>{{i.Nd_H}}</td>
+ 			<td>{{i.Yb_H}}</td>
+ 		  </tr>
+		  
+	  </tbody>
+     </table>
+	 
+	 <table id='apogee_visits' class="visstyle rounded ti-12" style="width:95%; margin-bottom: 20px;">
+  	  <tbody>
+	    <tr>
+		  <th><u>Field</u></th>
+		  <th><u>Loc ID</u></th>
+		  <th><u>Plate</u></th>
+		  <th><u>Telescope</u></th>
+		  <th><u>JD</u></th>
+		  <th><u>Date</u></th>
+		  <th><u>RV</u></th>
+		  <th><u>RV Unc</u></th>
+		  <th><u>S/N</u></th>
+	    </tr>  
+		
+  		{% for j in allVisit %}
+  		  {% if i.LocID == j.LocID and i.field == j.field %}
+			  <tr>
+				<td>{{j.field}}</td>
+				<td>{{j.LocID}}</td>
+				<td>{{j.plate}}</td>
+				<td>{{j.telescope}}</td>
+				<td>{{j.jd}}</td>
+				<td>{{j.date}}</td>
+				<td>{{j.rv}}</td>
+				<td>{{j.rverr}}</td>
+				<td>{{j.snr}}</td>
+			  </tr>
+  		   {% endif %}
+  		{% endfor %}
+		  
+	  </tbody>
+    </table>
+	
+	{% if i.graph %}
+ 		<div class="row" >
+ 			{{ i.graph|safe }}
+ 		</div>
+	{% endif %}
+	
+	{% endfor %}
+	  
+	</div>
+  
+  
+{% endblock %}

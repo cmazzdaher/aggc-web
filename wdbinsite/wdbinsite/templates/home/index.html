@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block header-content %}
+  <header>
+    <div class="container pt-40">
+      <div class="row v-center p-y-5">
+        <div class="col-md-15 mb-10">
+          <h1>Summary of Data and Observation Plans for AGGC WD Binaries</h1>
+       	   	<p class='lead'>
+				All of the data related to the WIYN/LCO projects can be found on their designated Google Drives. If you need access, email <a href="mailto:daher.37@osu.edu"><b>Christine</b></a> for the login credentials.
+			
+			</p>
+			<p>Some helpful project links:
+			<ul>
+				<li class='p-y-5'>
+					<a href="https://wiyn-queuemaster.kpno.noirlab.edu/login/?next=/login_success/"><b>NEID Queue Portal</b></a>
+				</li>
+				
+				<li class='p-y-5'>
+					<a href="{% static "files/User_Guide_NEID_Queue_Portal_23B.pdf" %}"><b>NEID Portal Queue User Guide</b></a>
+				</li>
+				
+				<li class='p-y-5'>
+					<a href="https://www.sdss4.org/dr17/irspec/"><b>APOGEE documentation homepage</b></a>
+				</li>
+				
+				<li class='p-y-5'>
+					<a href="https://dr17.sdss.org/infrared/spectrum/search"><b>SDSS DR17 SAS</b></a>
+				</li>
+			</ul>
+       		</p>
+        </div>
+      </div>
+    </div>
+  </header>
+{% endblock %}

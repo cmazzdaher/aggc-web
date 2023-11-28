@@ -1,0 +1,216 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Data{% endblock %}
+
+{% block additional_js %}
+
+<script>
+	$('#full_data_table').DataTable({searching: true,"language": {
+    "search": "Search APOGEE IDs:"
+  }})
+	
+  $('[data-toggle="collapse"]').click(function () {
+    $(this).toggleClass("active");
+    if ($(this).hasClass("active")) {
+      $(this).text("Show filter options");
+    } else {
+      $(this).text("Hide filter options");
+    }
+  });
+	
+</script>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="row justify-content-md-center collapse show" id="collapseform">
+	
+	<div class="filter rounded">
+	
+		<form method="get">
+			
+			<div class="form-group row pt-3 pl-35 pr-4">
+				
+				<label class="col-form-label" for="minRA">Min RA</label>
+				<div class="col">
+					<input class="form-control" type="number" step="any" min=0 max=360 id="minRA" name="min_RA" placeholder="0&deg; - 360&deg;">
+				</div>
+				
+				<label class="col-form-label" for="maxRA">Max RA</label>
+				<div class="col">
+					<input class="form-control" type="number" step="any" min=0 max=360 id="maxRA" name="max_RA" placeholder="0&deg; - 360&deg;">
+				</div>
+				
+				
+				<div class="col">
+				</div>
+				
+				
+				<label class="col-form-label" for="minDec">Min Dec</label>
+				<div class="col">
+					<input class="form-control" type="number" step="any" min=-90 max=90 id="minDec" name="min_Dec" placeholder="-90&deg; - 90&deg;">
+				</div>
+				
+				<label class="col-form-label" for="maxDec">Max Dec</label>
+				<div class="col">
+					<input class="form-control" type="number" step="any" min=-90 max=90 id="maxDec" name="max_Dec" placeholder="-90&deg; - 90&deg;">
+				</div>
+				
+				
+				<div class="col">
+				</div>
+				
+                
+ 				<label class="col-form-label" for="maxG">Max G</label>
+ 				<div class="col">
+ 					<input class="form-control" type="number" step="any" min=0 max=14 id="maxG" name="max_G" placeholder="0 - 14 mag">
+ 				</div>
+				
+			</div>
+			
+			
+			<div class="form-group row pt-3 pl-35 pr-4">
+				
+				<label class="col-form-label" for="minTeff">Min Teff</label>
+				<div class="col">
+					<input class="form-control" type="number" step="any" min=3000 max=10000 id="minTeff" name="min_Teff" placeholder="3 - 10 kK">
+				</div>
+				
+				<label class="col-form-label" for="maxTeff">Max Teff</label>
+				<div class="col">
+					<input class="form-control" type="number" step="any" min=3000 max=9000 id="maxTeff" name="max_Teff" placeholder="3 - 10 kK">
+				</div>
+				
+				
+				<div class="col">
+				</div>
+				
+				
+				<label class="col-form-label" for="minlogg">Min log(g)</label>
+				<div class="col">
+					<input class="form-control" type="number" step="any" min=-1 max=6 id="minlogg" name="min_logg" placeholder="-1 - 6">
+				</div>
+				
+				<label class="col-form-label" for="maxlogg">Max log(g)</label>
+				<div class="col">
+					<input class="form-control" type="number" step="any" min=-1 max=6 id="maxlogg" name="max_logg" placeholder="-1 - 6">
+				</div>
+				
+				
+				<div class="col">
+				</div>
+				
+                
+ 				<label class="col-form-label" for="maxvsini">Max vsin(i)</label>
+ 				<div class="col">
+ 					<input class="form-control" type="number" step="any" min=0 id="maxvsini" name="max_vsini" placeholder="&ge; 0 km/s">
+ 				</div>
+				
+			</div>
+			   
+			   
+			<div class="form-group pt-3 row pl-35 pr-4">
+                
+ 				<label class="col-form-label" for="obsProg">Obs. Program</label>
+ 				<div class="col">
+					<select class="form-control" name="obs_prog" id="obsProg">
+					    <option value="All Stars">All Stars</option>
+						<option value="WIYN-MS">WIYN-MS</option>
+					    <option value="LCO-SSG">LCO-SSG</option>
+					    <option value="No Program">No Program</option>
+					  </select>
+ 				</div>
+				
+				
+				<div class="col">
+				</div>
+				
+ 				
+				<label class="col-form-label" for="minNrvs">Min N<sub>RV</sub></label>
+ 				<div class="col">
+ 					<input class="form-control" type="number" step="1" min=1 id="minNrvs" name="min_Nrvs" placeholder="int > 0">
+ 				</div>
+				
+				<label class="col-form-label" for="maxNrvs">Max N<sub>RV</sub></label>
+ 				<div class="col">
+ 					<input class="form-control" type="number" step="1" min=1 id="maxNrvs" name="max_Nrvs" placeholder="int > 0">
+ 				</div>
+				
+				
+				<div class="col">
+				</div>
+				
+				
+ 				<label class="col-form-label" for="minDRVMsnr40">Min &Delta;RV<sub>max, S/N>40</sub></label>
+ 				<div class="col">
+ 					<input class="form-control" type="number" step="any" min=0 id="minDRVMsnr40" name="min_DRVMsnr40" placeholder=" &ge; 0 km/s">
+ 				</div>
+				
+			</div>
+			
+			   
+			<div class="form-group row justify-content-md-center pt-2">
+				<button type="submit" class="btn btn-primary">
+                  Filter
+                </button>
+			</div>
+			
+		</form>
+	</div>
+</div>
+
+
+      <a href="#filter" type="button" data-toggle="collapse" data-target="#collapseform" aria-expanded="false" aria-controls="collapseform" style="float: right">
+        Hide filter options
+      </a>
+
+
+<div class="row">
+  <div class="col-md-12">
+    <table id='full_data_table' class="table compact">
+      <thead>
+        <tr>
+		  
+		  <th>APOGEE ID</th>
+		  <th>Obsv. Program</th>
+          <th>RA</th>
+          <th>Dec</th>
+		  <th>G</th>
+		  <th>N<sub>RVs</sub></th>
+		  <th>&Delta;RV<sub>max, S/N>40</sub></th>
+		  <th>Teff</th>
+		  <th>log(g)</th>
+		  <th>vsin(i)</th>
+		  <th>[Fe/H]</th>
+        </tr>
+      </thead>
+	  <tbody> 
+	      <!-- jinja2 Technique -->
+	      {% if d %}
+	      {% for i in d %} 
+	        <tr>
+			  <td> <a href="{% url 'data:summary' pk=i.APOGEE_ID %}">{{i.APOGEE_ID}} </td>
+			  <td> {{i.Obs_Program}} </td>
+			  <td> {{i.RA}} </td>
+			  <td> {{i.Dec}} </td>
+			  <td> {{i.G}} </td>
+			  <td> {{i.Nrvs}} </td>
+			  <td> {{i.DRVM_SNR40}} </td>
+			  <td> {{i.Teff}} </td>
+			  <td> {{i.logg}} </td>
+			  <td> {{i.vsini}} </td>
+			  <td> {{i.Fe_H}} </td>
+	        </tr>
+	      {% endfor %}
+	      {% endif %}
+	      </tbody>
+    </table>
+
+</div>
+
+
+
+{% endblock %}

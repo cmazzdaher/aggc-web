@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ object_id }} -- RV Curve Status{% endblock %}
+
+{% block additional_js %}
+
+
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col col-sm-2">
+      {% include 'datatable/source_navbar_content.html' %}
+    </div>
+    
+	<div class="col-lg-9" style="padding-left: 40px; padding-bottom: 20px;">
+	  <h1>{{object_id}}</h1>
+	  <br>
+      <h3>RV Curves and Orbital Solutions</h3>
+	  <br>
+    </div>
+  
+	{% if graph %}
+	  <div class="col col-lg-8" style="margin-left:-45px; border: 0px solid #d3d3d3;">
+	  {{ graph|safe }}
+	  </div>
+	  
+	  <div class="col col-sm-4" style="border: 0px solid #d3d3d3;">
+  	 <table id='rvs' class="visstyle rounded ti-13" style= "margin-left:-15px; width:130%">
+    	  <tbody>
+  	    <tr>
+  		  <th><u>Survey</u></th>
+  		  <th><u>Tescp</u></th>
+  		  <th><u>Date</u></th>
+  		  <th><u>RV</u></th>
+  		  <th><u>RV Unc</u></th>
+  		  <th><u>S/N</u></th>
+  	    </tr>
+		{% for r in rvdata %}
+		  <tr>
+			<td>{{r.survey}}</td>
+			<td>{{r.telescope}}</td>
+			<td>{{r.date}}</td>
+			<td>{{r.rv}}</td>
+			<td>{{r.rverr}}</td>
+			<td>{{r.snr}}</td>
+		  </tr>
+		{% endfor %}
+  	  </tbody>
+      </table>
+	  </div>
+	{% endif %}
+  
+  
+{% endblock %}

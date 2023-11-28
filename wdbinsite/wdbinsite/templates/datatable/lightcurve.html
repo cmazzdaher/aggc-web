@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ object_id }} -- Light Curve{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col col-sm-2">
+      {% include 'datatable/source_navbar_content.html' %}
+    </div>
+    
+	<div class="col-lg-9" style="padding-left: 40px;">
+	  <h1>{{object_id}}</h1>
+	  <br>
+      <h3>Light Curve</h3>
+	  <br>
+    </div>
+  
+  
+  
+  <div class="row p-y-15">
+		<div class="row">
+		  <p>Where a plot of the light curve from TESS, Kepler, Gaia, etc. can go. Data will probably come from Don.</p>
+		</div>
+    </div>
+  
+  
+{% endblock %}

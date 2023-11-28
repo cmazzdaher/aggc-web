@@ -1,0 +1,25 @@
+<nav id="nav-scroll" class="rounded custom-side-nav">
+  
+  <ul class="navbar-nav m-x-auto">
+  
+  <li class="nav-item {% if request.resolver_match.url_name == 'summary' %}active{% endif %}">
+    <a class="nav-link" href="{% url 'data:summary' pk=object_id %}">Data Overview</a>
+  </li>
+  
+  <li class="nav-item {% if request.resolver_match.url_name == 'rvcurve' %}active{% endif %}">
+    <a class="nav-link" href="{% url 'data:rvcurve' pk=object_id %}">RV Curve</a>
+  </li>
+  
+  <li class="nav-item {% if request.resolver_match.url_name == 'sed' %}active{% endif %}">
+    <a class="nav-link" href="{% url 'data:sed' pk=object_id %}">SED</a>
+  </li>
+  
+  <li class="nav-item {% if request.resolver_match.url_name == 'lightcurve' %}active{% endif %}">
+    <a class="nav-link" href="{% url 'data:lightcurve' pk=object_id %}">Light Curve</a>
+  </li>
+  
+  <li class="nav-item {% if request.resolver_match.url_name == 'status' %}active{% endif %}">
+    <a class="nav-link" href="{% url 'data:status' pk=object_id %}">Observing Status</a>
+  </li>
+
+</ul>
