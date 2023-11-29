@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% load crispy_forms_tags %}
+
 
 {% block title %}Data{% endblock %}
 
@@ -196,13 +196,13 @@
 			  <td> {{i.Obs_Program}} </td>
 			  <td> {{i.RA}} </td>
 			  <td> {{i.Dec}} </td>
-			  <td> {{i.G}} </td>
+			  <td> {{i.G|floatformat}} </td>
 			  <td> {{i.Nrvs}} </td>
-			  <td> {{i.DRVM_SNR40}} </td>
-			  <td> {{i.Teff}} </td>
-			  <td> {{i.logg}} </td>
-			  <td> {{i.vsini}} </td>
-			  <td> {{i.Fe_H}} </td>
+			  <td> {{i.DRVM_SNR40|floatformat}} </td>
+			  <td> {{i.Teff|floatformat:"0g"}} </td>
+			  <td> {{i.logg|floatformat:"-2"}} </td>
+			  <td> {{i.vsini|floatformat}} </td>
+			  <td> {{i.Fe_H|floatformat:"-2"}} </td>
 	        </tr>
 	      {% endfor %}
 	      {% endif %}

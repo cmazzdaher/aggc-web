@@ -41,9 +41,6 @@ INSTALLED_APPS = [
     
     
     'bootstrap4',  # Front-end component library for building templates
-    'crispy_forms',  # Makes forms look pretty
-    'crispy_bootstrap4',
-    # 'wdbinsite.apps.datatable',
 ]
 
 MIDDLEWARE = [

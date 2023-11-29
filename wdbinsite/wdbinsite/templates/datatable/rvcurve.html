@@ -41,9 +41,9 @@
 			<td>{{r.survey}}</td>
 			<td>{{r.telescope}}</td>
 			<td>{{r.date}}</td>
-			<td>{{r.rv}}</td>
-			<td>{{r.rverr}}</td>
-			<td>{{r.snr}}</td>
+			<td>{{r.rv|floatformat:"-3"}}</td>
+			<td>{{r.rverr|floatformat:"-3"}}</td>
+			<td>{{r.snr|floatformat:"0"}}</td>
 		  </tr>
 		{% endfor %}
   	  </tbody>
