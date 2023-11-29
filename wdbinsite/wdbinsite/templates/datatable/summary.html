@@ -32,18 +32,18 @@
           </tr>
 		  
 	      <tr>
-		    <td>{{borja.0.TWD}}</td>
-			<td>{{borja.0.RWD}}</td>
-			<td>{{borja.0.TRed}}</td>
-			<td>{{borja.0.RRed}}</td>
-			<td>{{borja.0.DRVM}}</td>
-			<td>{{borja.0.DRVM_SNR40}}</td>
+		    <td>{{borja.0.TWD|floatformat:"0g"}}</td>
+			<td>{{borja.0.RWD|floatformat:"-1"}}</td>
+			<td>{{borja.0.TRed|floatformat:"0g"}}</td>
+			<td>{{borja.0.RRed|floatformat:"-1"}}</td>
+			<td>{{borja.0.DRVM|floatformat:"-2"}}</td>
+			<td>{{borja.0.DRVM_SNR40|floatformat:"-2"}}</td>
 		  </tr>
 		  
 	    </tbody>
       </table>
 	  
-	  <table id='basics' class="myline mystripes-td ti-13" style="width:85%; margin-bottom: 50px;">
+	  <table id='astrometrics' class="myline mystripes-td ti-13" style="width:85%; margin-bottom: 25px;">
 		<tbody>
 		  <tr class="prespace">
   	        <th>RA</th>
@@ -59,14 +59,19 @@
 			<td>{{allStar.0.RA}}</td>
 			<td>{{allStar.0.Dec}}</td>
 			<td>{{allStar.0.Gaia_ID}}</td>
-			<td>{{allStar.0.Gaia_para}}</td>
-			<td>{{allStar.0.Gaia_pmra}}</td>
-			<td>{{allStar.0.Gaia_pmdec}}</td>
-			<td>{{allStar.0.Gaia_BJd}}</td>
+			<td>{{allStar.0.Gaia_para|floatformat:"-2"}}</td>
+			<td>{{allStar.0.Gaia_pmra|floatformat:"-2"}}</td>
+			<td>{{allStar.0.Gaia_pmdec|floatformat:"-2"}}</td>
+			<td>{{allStar.0.Gaia_BJd|floatformat:"-1"}}</td>
 		  </tr>
 		  
-          <tr class="space">
-		  </tr>
+		</tbody>
+	  </table>
+		  
+	  
+	  <table id='photometry' class="myline mystripes-td ti-13" style="width:85%; margin-bottom: 50px;">
+		<tbody>
+		  <tr class="prespace">
 		  
 		  <tr>
 	        <th>Gaia B<sub>p</sub></th>
@@ -78,12 +83,12 @@
           </tr>
 		  
 	      <tr>
-		    <td>{{allStar.0.Gaia_bp}}</td>
-			<td>{{allStar.0.Gaia_G}}</td>
-			<td>{{allStar.0.Gaia_rp}}</td>
-			<td>{{allStar.0.J}}</td>
-			<td>{{allStar.0.H}}</td>
-			<td>{{allStar.0.K}}</td>
+		    <td>{{allStar.0.Gaia_bp|floatformat:"-2"}}</td>
+			<td>{{allStar.0.Gaia_G|floatformat:"-2"}}</td>
+			<td>{{allStar.0.Gaia_rp|floatformat:"-2"}}</td>
+			<td>{{allStar.0.J|floatformat:"-2"}}</td>
+			<td>{{allStar.0.H|floatformat:"-2"}}</td>
+			<td>{{allStar.0.K|floatformat:"-2"}}</td>
 		  </tr>
 		   
 		</tbody>
@@ -111,14 +116,14 @@
 			  <td>{{i.field}}</td>
 			  <td>{{i.LocID}}</td>
 			  <td>{{i.telescope}}</td>
-			  <td>{{i.SNR}}</td>
-			  <td>{{i.chi2}}</td>
-		      <td>{{i.Teff}}</td>
-			  <td>{{i.logg}}</td>
-			  <td>{{i.vsini}}</td>
-			  <td>{{i.Fe_H}}</td>
-			  <td>{{i.M_H}}</td>
-			  <td>{{i.alpha_Fe}}</td>
+			  <td>{{i.SNR|floatformat:"0"}}</td>
+			  <td>{{i.chi2|floatformat:"-1"}}</td>
+		      <td>{{i.Teff|floatformat:"0g"}}</td>
+			  <td>{{i.logg|floatformat:"-2"}}</td>
+			  <td>{{i.vsini|floatformat:"-1"}}</td>
+			  <td>{{i.Fe_H|floatformat:"-2"}}</td>
+			  <td>{{i.M_H|floatformat:"-2"}}</td>
+			  <td>{{i.alpha_Fe|floatformat:"-2"}}</td>
 			</tr>
 			
 		  </tbody>
@@ -144,19 +149,19 @@
          </tr>
 		  
 		  <tr>
-		    <td>{{i.C_H}}</td>
-			<td>{{i.CI_H}}</td>
-			<td>{{i.N_H}}</td>
-			<td>{{i.O_H}}</td>
-			<td>{{i.Na_H}}</td>
-			<td>{{i.Mg_H}}</td>
-		    <td>{{i.Al_H}}</td>
-			<td>{{i.Si_H}}</td>
-			<td>{{i.P_H}}</td>
-			<td>{{i.S_H}}</td>
-			<td>{{i.K_H}}</td>
-			<td>{{i.Ca_H}}</td>
-			<td>{{i.Ti_H}}</td>
+		    <td>{{i.C_H|floatformat:"-2"}}</td>
+			<td>{{i.CI_H|floatformat:"-2"}}</td>
+			<td>{{i.N_H|floatformat:"-2"}}</td>
+			<td>{{i.O_H|floatformat:"-2"}}</td>
+			<td>{{i.Na_H|floatformat:"-2"}}</td>
+			<td>{{i.Mg_H|floatformat:"-2"}}</td>
+		    <td>{{i.Al_H|floatformat:"-2"}}</td>
+			<td>{{i.Si_H|floatformat:"-2"}}</td>
+			<td>{{i.P_H|floatformat:"-2"}}</td>
+			<td>{{i.S_H|floatformat:"-2"}}</td>
+			<td>{{i.K_H|floatformat:"-2"}}</td>
+			<td>{{i.Ca_H|floatformat:"-2"}}</td>
+			<td>{{i.Ti_H|floatformat:"-2"}}</td>
 		  </tr>
 		  
           <tr class="space">
@@ -178,18 +183,18 @@
            </tr>
 		   
  		  <tr>
- 		    <td>{{i.TiII_H}}</td>
- 			<td>{{i.V_H}}</td>
- 			<td>{{i.Cr_H}}</td>
- 			<td>{{i.Mn_H}}</td>
- 			<td>{{i.Co_H}}</td>
- 			<td>{{i.Ni_H}}</td>
- 		    <td>{{i.Cu_H}}</td>
- 			<td>{{i.Ge_H}}</td>
- 			<td>{{i.Rb_H}}</td>
- 			<td>{{i.Ce_H}}</td>
- 			<td>{{i.Nd_H}}</td>
- 			<td>{{i.Yb_H}}</td>
+ 		    <td>{{i.TiII_H|floatformat:"-2"}}</td>
+ 			<td>{{i.V_H|floatformat:"-2"}}</td>
+ 			<td>{{i.Cr_H|floatformat:"-2"}}</td>
+ 			<td>{{i.Mn_H|floatformat:"-2"}}</td>
+ 			<td>{{i.Co_H|floatformat:"-2"}}</td>
+ 			<td>{{i.Ni_H|floatformat:"-2"}}</td>
+ 		    <td>{{i.Cu_H|floatformat:"-2"}}</td>
+ 			<td>{{i.Ge_H|floatformat:"-2"}}</td>
+ 			<td>{{i.Rb_H|floatformat:"-2"}}</td>
+ 			<td>{{i.Ce_H|floatformat:"-2"}}</td>
+ 			<td>{{i.Nd_H|floatformat:"-2"}}</td>
+ 			<td>{{i.Yb_H|floatformat:"-2"}}</td>
  		  </tr>
 		  
 	  </tbody>
@@ -218,9 +223,9 @@
 				<td>{{j.telescope}}</td>
 				<td>{{j.jd}}</td>
 				<td>{{j.date}}</td>
-				<td>{{j.rv}}</td>
-				<td>{{j.rverr}}</td>
-				<td>{{j.snr}}</td>
+				<td>{{j.rv|floatformat:"-3"}}</td>
+				<td>{{j.rverr|floatformat:"-3"}}</td>
+				<td>{{j.snr|floatformat:"0"}}</td>
 			  </tr>
   		   {% endif %}
   		{% endfor %}

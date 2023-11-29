@@ -15,25 +15,20 @@ from . import helper_functions as hf
 #   **  Data Imports  **
 
 
-# Read general summary file and round values to a reasonable number of decimal places
+# Read general summary file
 datafile = 'wdbinsite/static/files/wdbin_main_summary.csv'
 datatable = pd.read_csv(datafile)
-datatable_round = datatable.round({'G':1, 'H':1, 'Habs':1, 'DRVM':2, 'DRVM_SNR40':2, 'TWD':0, 'RWD':2, 'TRed':0, 'RRed':2, 'Teff':0, 'logg':2, 'vsini':2, 'Fe_H':2, 'ruwe':2, 
-                                   'SHmass16':2, 'SHmass50':2, 'SHmass84':2, 'SHdist05':2, 'SHdist16':2,'SHdist50':2, 'SHdist84':2, 'SHdist95':2})
 
-# Read allStar summary file and round values to a reasonable number of decimal places
+
+# Read allStar summary file
 allStar = 'wdbinsite/static/files/wdbin_apogee_allStar_summary.csv'
 allStardf = pd.read_csv(allStar)
-allStardf_round = allStardf.round({'SNR':2, 'chi2':2, 'Teff':1, 'logg':2, 'vsini':2, 'Fe_H':2, 'M_H':2, 'alpha_Fe':2, 'C_H':2, 'CI_H':2, 
-                                    'N_H':2, 'O_H':2, 'Na_H':2, 'Mg_H':2, 'Al_H':2, 'Si_H':2, 'P_H':2, 'S_H':2, 'K_H':2, 'Ca_H':2, 'Ti_H':2, 
-                                    'TiII_H':2, 'V_H':2, 'Cr_H':2, 'Mn_H':2, 'Co_H':2, 'Ni_H':2, 'Cu_H':2,'Ge_H':2, 'Rb_H':2, 'Ce_H':2, 'Nd_H':2, 'Yb_H':2, 
-                                    'J':2, 'H':2, 'K':2, 'Jerr':2, 'Herr':2, 'Kerr':2, 'Gaia_para':2, 'Gaia_pmra':2, 'Gaia_pmdec':2, 'Gaia_BJd':2, 'Gaia_G':2, 
-                                    'Gaia_bp':2, 'Gaia_rp':2})
 
-# Read allVisit summary file and round values to a reasonable number of decimal places
+
+# Read allVisit summary file
 allVisit = 'wdbinsite/static/files/wdbin_apogee_allVisit_summary.csv'
 allVisitdf = pd.read_csv(allVisit)
-allVisitdf_round = allVisitdf.round({'rv':3, 'rverr':3, 'snr':1})
+
 
     
     
@@ -83,7 +78,7 @@ def fetch_table(request):
     
     
     # Set original data table source
-    datain = datatable_round
+    datain = datatable
     
     
     # Basic outline: 
@@ -173,19 +168,19 @@ def fetch_table(request):
 def indv_summary(request, **kwargs):
     
     # Limit summary table to entries matching the APOGEE ID, then pass the dataframe as a list of JSON entries that can be passed to the HTML response
-    borja_entries = datatable_round[datatable_round['APOGEE_ID'] == kwargs['pk']]
+    borja_entries = datatable[datatable['APOGEE_ID'] == kwargs['pk']]
     borja_json_records = borja_entries.to_json(orient = 'records')
     borja_data = json.loads(borja_json_records)
     
     
     # Limit allStar table to entries matching the APOGEE ID, then pass the dataframe as a list of JSON entries that can be passed to the HTML response
-    allStar_entries = allStardf_round[allStardf_round['APOGEE_ID'] == kwargs['pk']]
+    allStar_entries = allStardf[allStardf['APOGEE_ID'] == kwargs['pk']]
     allStar_json_records = allStar_entries.to_json(orient = 'records')
     allStar_data = json.loads(allStar_json_records)
     
     
     # Limit allVisit table to entries matching the APOGEE ID
-    allVisit_entries = allVisitdf_round[allVisitdf_round['APOGEE_ID'] == kwargs['pk']]
+    allVisit_entries = allVisitdf[allVisitdf['APOGEE_ID'] == kwargs['pk']]
     # Convert JDs to human-readable dates
     allVisit_entries.insert(loc=5, column='date', value=hf.jd_to_readable_date(allVisit_entries['jd']))
     # Pass the dataframe as a list of JSON entries that can be passed to the HTML response
@@ -336,11 +331,8 @@ def indv_rvcurve(request, **kwargs):
     # Add a column for the date
     rvs.insert(loc=4, column='date', value=hf.jd_to_readable_date(rvs['jd']))
     
-    # Create a separate dataframe with rounded values for the display table
-    rvs_round = rvs.round({'rv':3, 'rverr':3, 'snr':1})
-    
     # Convert the pandas dataframe to a list of JSON entries that can be passed to the HTML response
-    rvs_json_records = rvs_round.to_json(orient = 'records')
+    rvs_json_records = rvs.to_json(orient = 'records')
     rvs_data = json.loads(rvs_json_records)
     
     #   *  Plotting  *
