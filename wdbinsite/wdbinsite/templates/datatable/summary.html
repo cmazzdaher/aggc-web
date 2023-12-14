@@ -8,10 +8,11 @@
       {% include 'datatable/source_navbar_content.html' %}
     </div>
     
-	<div class="col-lg-9" style="padding-left: 40px;">
-	 <h1> {{object_id}}</h1>
+	<div class="col-lg-9 pl-40 pb-20">
+	 <h6 class="ti-12 mb-0">                                    APOGEE ID                                                                                 Gaia ID</h6>
+	 <h2> {{object_id}}  /  {{borja.0.Gaia_ID}}</h2>
 	  <br>
-      <h3>General Overview of Spectro-Photometric Data</h3>
+      <h4>General Overview of Spectro-Photometric Data</h4>
     </div>
 	
 	
@@ -19,7 +20,7 @@
 	  
       <h6> System Parameters from Anguiano+2022 Catalog + Photometric/Astrometric Data</h6>
 	  
-	  <table id='valueadded' class="myline mystripes-td ti-15" style="width:85%; margin-top: 15px; margin-bottom: 25px;">
+	  <table id='valueadded' class="myline mystripes-td ti-15 mt-15 mb-25" style="width:85%;">
   	   <tbody>
 		  
           <tr class="prespace">
@@ -43,7 +44,7 @@
 	    </tbody>
       </table>
 	  
-	  <table id='astrometrics' class="myline mystripes-td ti-13" style="width:85%; margin-bottom: 25px;">
+	  <table id='astrometrics' class="myline mystripes-td ti-13 mb-25" style="width:85%;">
 		<tbody>
 		  <tr class="prespace">
   	        <th>RA</th>
@@ -69,7 +70,7 @@
 	  </table>
 		  
 	  
-	  <table id='photometry' class="myline mystripes-td ti-13" style="width:85%; margin-bottom: 50px;">
+	  <table id='photometry' class="myline mystripes-td ti-13 mb-50" style="width:85%;">
 		<tbody>
 		  <tr class="prespace">
 		  
@@ -94,10 +95,10 @@
 		</tbody>
 	  </table>
 	  
-	   <h6 style="margin-top: 10px; margin-bottom: -20px"> All allStar Entries and Their Associated allVisit Entries:</h6>
+	   <h6 class="mt-10" style="margin-bottom: -20px"> All allStar Entries and Their Associated allVisit Entries:</h6>
 	  {% for i in allStar %}
 		
-		<table id='apogee_basics' class="myline mystripes-td ti-13" style="width:100%; margin-top: 50px; margin-bottom: 18px;">
+		<table id='apogee_basics' class="myline mystripes-td ti-13 mt-50 mb-15" style="width:100%;">
 		  <tbody>
   	        <tr class="prespace">
 		      <th>Field</th>
@@ -129,7 +130,7 @@
 		  </tbody>
 		 </table>
 		  
-	 <table id='apogee_chems' class="myline mystripes-td ti-12" style="width:95%; margin-bottom: 18px;">
+	 <table id='apogee_chems' class="myline mystripes-td ti-12 mb-15" style="width:95%;">
   	  <tbody>
 		  
         <tr>
@@ -200,7 +201,7 @@
 	  </tbody>
      </table>
 	 
-	 <table id='apogee_visits' class="visstyle rounded ti-12" style="width:95%; margin-bottom: 20px;">
+	 <table id='apogee_visits' class="visstyle rounded ti-12 mb-20" style="width:80%;">
   	  <tbody>
 	    <tr>
 		  <th><u>Field</u></th>
@@ -242,6 +243,8 @@
 	{% endfor %}
 	  
 	</div>
+	
+	
   
   
 {% endblock %}

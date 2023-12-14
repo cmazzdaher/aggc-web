@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}{{ object_id }} -- RV Curve Status{% endblock %}
+{% block title %}{{ object_id }} -- RV Curve{% endblock %}
 
 {% block additional_js %}
 
@@ -13,15 +13,16 @@
       {% include 'datatable/source_navbar_content.html' %}
     </div>
     
-	<div class="col-lg-9" style="padding-left: 40px; padding-bottom: 20px;">
-	  <h1>{{object_id}}</h1>
+	<div class="col-lg-9 pl-40 pb-20">
+ 	 <h6 class="ti-12 mb-0">                                    APOGEE ID</h6>
+ 	 <h2> {{object_id}}</h2>
 	  <br>
-      <h3>RV Curves and Orbital Solutions</h3>
+      <h4>RV Curves and Orbital Solutions</h4>
 	  <br>
     </div>
   
 	{% if graph %}
-	  <div class="col col-lg-8" style="margin-left:-45px; border: 0px solid #d3d3d3;">
+	  <div class="col col-lg-8" style="margin-left:-45px;">
 	  {{ graph|safe }}
 	  </div>
 	  
