@@ -49,21 +49,21 @@
 		  <tr class="prespace">
   	        <th>RA</th>
   	        <th>Dec</th>
-  			<th>Gaia ID</th>
-  		    <th>Parallax   [mas]</th>
-            <th>&mu;<sub>RA</sub>   [mas/yr]</th>
-  		    <th>&mu;<sub>Dec</sub>   [mas/yr]</th>
-  		    <th>Bailer-Jones <i>d</i>   [pc]</th>
+  			<th>Gaia EDR3 ID</th>
+  		    <th>EDR3 Parallax   [mas]</th>
+            <th>EDR3 &mu;<sub>RA</sub>   [mas/yr]</th>
+  		    <th>EDR3 &mu;<sub>Dec</sub>   [mas/yr]</th>
+  		    <th>EDR3 Bailer-Jones <i>d</i>   [pc]</th>
 		  </tr>
 		  
 	      <tr>
 			<td>{{allStar.0.RA}}</td>
 			<td>{{allStar.0.Dec}}</td>
-			<td>{{allStar.0.Gaia_ID}}</td>
-			<td>{{allStar.0.Gaia_para|floatformat:"-2"}}</td>
-			<td>{{allStar.0.Gaia_pmra|floatformat:"-2"}}</td>
-			<td>{{allStar.0.Gaia_pmdec|floatformat:"-2"}}</td>
-			<td>{{allStar.0.Gaia_BJd|floatformat:"-1"}}</td>
+			<td>{{allStar.0.Gaia_EDR3_ID}}</td>
+			<td>{{allStar.0.Gaia_EDR3_para|floatformat:"-2"}}</td>
+			<td>{{allStar.0.Gaia_EDR3_pmra|floatformat:"-2"}}</td>
+			<td>{{allStar.0.Gaia_EDR3_pmdec|floatformat:"-2"}}</td>
+			<td>{{allStar.0.Gaia_EDR3_BJd|floatformat:"-1"}}</td>
 		  </tr>
 		  
 		</tbody>
@@ -84,9 +84,9 @@
           </tr>
 		  
 	      <tr>
-		    <td>{{allStar.0.Gaia_bp|floatformat:"-2"}}</td>
-			<td>{{allStar.0.Gaia_G|floatformat:"-2"}}</td>
-			<td>{{allStar.0.Gaia_rp|floatformat:"-2"}}</td>
+		    <td>{{allStar.0.Gaia_EDR3_bp|floatformat:"-2"}}</td>
+			<td>{{allStar.0.Gaia_EDR3_G|floatformat:"-2"}}</td>
+			<td>{{allStar.0.Gaia_EDR3_rp|floatformat:"-2"}}</td>
 			<td>{{allStar.0.J|floatformat:"-2"}}</td>
 			<td>{{allStar.0.H|floatformat:"-2"}}</td>
 			<td>{{allStar.0.K|floatformat:"-2"}}</td>
@@ -106,12 +106,14 @@
               <th>Telescope</th>
 		      <th>S/N</th>
 		      <th>&chi;<sup>2</sup></th>
-			  <th>Teff   [K]</th>
-			  <th>log(g)</th>
+			  <th>cal. Teff   [K]</th>
+			  <th>cal. log(g)</th>
 	          <th>vsin(i)   [km s<sup>-1</sup>]</th>
 			  <th>[Fe/H]</th>
 			  <th>[M/H]</th>
 			  <th>[&alpha;/Fe]</th>
+			  <th>uncal. Teff   [K]</th>
+			  <th>uncal. log(g)</th>
   	        </tr>
 		    <tr>
 			  <td>{{i.field}}</td>
@@ -119,12 +121,14 @@
 			  <td>{{i.telescope}}</td>
 			  <td>{{i.SNR|floatformat:"0"}}</td>
 			  <td>{{i.chi2|floatformat:"-1"}}</td>
-		      <td>{{i.Teff|floatformat:"0g"}}</td>
-			  <td>{{i.logg|floatformat:"-2"}}</td>
+		      <td>{{i.Teff_cal|floatformat:"0g"}}</td>
+			  <td>{{i.logg_cal|floatformat:"-2"}}</td>
 			  <td>{{i.vsini|floatformat:"-1"}}</td>
 			  <td>{{i.Fe_H|floatformat:"-2"}}</td>
 			  <td>{{i.M_H|floatformat:"-2"}}</td>
 			  <td>{{i.alpha_Fe|floatformat:"-2"}}</td>
+		      <td>{{i.Teff_uncal|floatformat:"0g"}}</td>
+			  <td>{{i.logg_uncal|floatformat:"-2"}}</td>
 			</tr>
 			
 		  </tbody>
