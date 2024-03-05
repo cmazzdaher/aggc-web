@@ -20,13 +20,13 @@
 	  
       <h6> System Parameters from Anguiano+2022 Catalog + Photometric/Astrometric Data</h6>
 	  
-	  <table id='valueadded' class="myline mystripes-td ti-15 mt-15 mb-25" style="width:85%;">
+	  <table id='valueadded' class="myline mystripes-td ti-15 mt-15 mb-25" style="width:85%; text-align: center;">
   	   <tbody>
 		  
           <tr class="prespace">
-	        <th>WD <i>T</i>   [K]</th>
+	        <th>WD T   [K]</th>
 	        <th>WD Radius   [R<sub>&CirclePlus;</sub>]</th>
-	        <th>SED Prim. <i>T</i>   [K]</th>
+	        <th>SED Prim. T   [K]</th>
 	        <th>Prim. Radius   [R<sub>&#10752;</sub>]</th>
             <th>&Delta;RV<sub>max</sub>   [km s<sup>-1</sup>]</th>
   		    <th>&Delta;RV<sub>max, S/N>40</sub>   [km s<sup>-1</sup>]</th>
@@ -44,11 +44,9 @@
 	    </tbody>
       </table>
 	  
-	  <table id='astrometrics' class="myline mystripes-td ti-13 mb-25" style="width:85%;">
+	  <table id='astrometrics' class="myline mystripes-td ti-13 mb-25" style="width:85%; text-align: center;">
 		<tbody>
 		  <tr class="prespace">
-  	        <th>RA</th>
-  	        <th>Dec</th>
   			<th>Gaia EDR3 ID</th>
   		    <th>EDR3 Parallax   [mas]</th>
             <th>EDR3 &mu;<sub>RA</sub>   [mas/yr]</th>
@@ -57,8 +55,6 @@
 		  </tr>
 		  
 	      <tr>
-			<td>{{allStar.0.RA}}</td>
-			<td>{{allStar.0.Dec}}</td>
 			<td>{{allStar.0.Gaia_EDR3_ID}}</td>
 			<td>{{allStar.0.Gaia_EDR3_para|floatformat:"-2"}}</td>
 			<td>{{allStar.0.Gaia_EDR3_pmra|floatformat:"-2"}}</td>
@@ -70,7 +66,7 @@
 	  </table>
 		  
 	  
-	  <table id='photometry' class="myline mystripes-td ti-13 mb-50" style="width:85%;">
+	  <table id='photometry' class="myline mystripes-td ti-13 mb-50" style="width:85%; text-align: center;">
 		<tbody>
 		  <tr class="prespace">
 		  
@@ -98,43 +94,55 @@
 	   <h6 class="mt-10" style="margin-bottom: -20px"> All allStar Entries and Their Associated allVisit Entries:</h6>
 	  {% for i in allStar %}
 		
-		<table id='apogee_basics' class="myline mystripes-td ti-13 mt-50 mb-15" style="width:100%;">
+		<table id='apogee_basics' class="myline mystripes-td ti-14 mt-50" style="width:95%; text-align: center;">
 		  <tbody>
   	        <tr class="prespace">
-		      <th>Field</th>
+    	      <th>RA</th>
+    	      <th>Dec</th>
+			  <th>Field</th>
 			  <th>Loc ID</th>
               <th>Telescope</th>
 		      <th>S/N</th>
 		      <th>&chi;<sup>2</sup></th>
-			  <th>cal. Teff   [K]</th>
-			  <th>cal. log(g)</th>
-	          <th>vsin(i)   [km s<sup>-1</sup>]</th>
-			  <th>[Fe/H]</th>
-			  <th>[M/H]</th>
-			  <th>[&alpha;/Fe]</th>
-			  <th>uncal. Teff   [K]</th>
-			  <th>uncal. log(g)</th>
   	        </tr>
 		    <tr>
+  			  <td>{{i.RA}}</td>
+  			  <td>{{i.Dec}}</td>
 			  <td>{{i.field}}</td>
 			  <td>{{i.LocID}}</td>
 			  <td>{{i.telescope}}</td>
 			  <td>{{i.SNR|floatformat:"0"}}</td>
 			  <td>{{i.chi2|floatformat:"-1"}}</td>
+			</tr>
+			
+            <tr class="space">
+  		  </tr>
+			
+  	        <tr class="prespace">
+			  <th>cal T<sub>eff</sub>   [K]</th>
+			  <th>cal log(g)</th>
+	          <th>vsin(i)   [km s<sup>-1</sup>]</th>
+			  <th>uncal T<sub>eff</sub>   [K]</th>
+			  <th>uncal log(g)</th>
+			  <th>[Fe/H]</th>
+			  <th>[M/H]</th>
+			  <th>[&alpha;/Fe]</th>
+  	        </tr>
+		    <tr>
 		      <td>{{i.Teff_cal|floatformat:"0g"}}</td>
 			  <td>{{i.logg_cal|floatformat:"-2"}}</td>
 			  <td>{{i.vsini|floatformat:"-1"}}</td>
+		      <td>{{i.Teff_uncal|floatformat:"0g"}}</td>
+			  <td>{{i.logg_uncal|floatformat:"-2"}}</td>
 			  <td>{{i.Fe_H|floatformat:"-2"}}</td>
 			  <td>{{i.M_H|floatformat:"-2"}}</td>
 			  <td>{{i.alpha_Fe|floatformat:"-2"}}</td>
-		      <td>{{i.Teff_uncal|floatformat:"0g"}}</td>
-			  <td>{{i.logg_uncal|floatformat:"-2"}}</td>
 			</tr>
 			
 		  </tbody>
 		 </table>
 		  
-	 <table id='apogee_chems' class="myline mystripes-td ti-12 mb-15" style="width:95%;">
+	 <table id='apogee_chems' class="myline mystripes-td ti-12 mt-30 mb-30" style="width:95%; text-align: center;">
   	  <tbody>
 		  
         <tr>
