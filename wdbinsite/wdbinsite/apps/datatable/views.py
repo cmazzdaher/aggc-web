@@ -164,7 +164,6 @@ def fetch_table(request):
 # Purpose: page with summary information from all spectro-photometric, primarily APOGEE
 # HTML template: summary.html
 # Data files: wdbin_apogee_allStar_summary.csv and wdbin_apogee_allVisit_summary.csv
-# Notes: TODO add plots of the spectra
 def indv_summary(request, **kwargs):
     
     # Limit summary table to entries matching the APOGEE ID, then pass the dataframe as a list of JSON entries that can be passed to the HTML response
@@ -423,7 +422,12 @@ def indv_sed(request, **kwargs):
 # Notes: TODO get data files from Don so I can read them in here and plot using plotly
 def indv_lightcurve(request, **kwargs):
     
-    return render(request, 'datatable/lightcurve.html', context={'object_id': kwargs['pk']})
+    # Limit summary table to entries matching the APOGEE ID, then pass the dataframe as a list of JSON entries that can be passed to the HTML response
+    borja_entries = datatable[datatable['APOGEE_ID'] == kwargs['pk']]
+    borja_json_records = borja_entries.to_json(orient = 'records')
+    borja_data = json.loads(borja_json_records)
+    
+    return render(request, 'datatable/lightcurve.html', context={'borja': borja_data, 'object_id': kwargs['pk']})
 
 
 

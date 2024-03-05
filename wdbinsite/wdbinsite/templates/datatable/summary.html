@@ -8,10 +8,11 @@
       {% include 'datatable/source_navbar_content.html' %}
     </div>
     
-	<div class="col-lg-9" style="padding-left: 40px;">
-	 <h1> {{object_id}}</h1>
+	<div class="col-lg-9 pl-40 pb-20">
+	 <h6 class="ti-12 mb-0">                                    APOGEE ID                                                                                 Gaia ID</h6>
+	 <h2> {{object_id}}  /  {{borja.0.Gaia_ID}}</h2>
 	  <br>
-      <h3>General Overview of Spectro-Photometric Data</h3>
+      <h4>General Overview of Spectro-Photometric Data</h4>
     </div>
 	
 	
@@ -19,13 +20,13 @@
 	  
       <h6> System Parameters from Anguiano+2022 Catalog + Photometric/Astrometric Data</h6>
 	  
-	  <table id='valueadded' class="myline mystripes-td ti-15" style="width:85%; margin-top: 15px; margin-bottom: 25px;">
+	  <table id='valueadded' class="myline mystripes-td ti-15 mt-15 mb-25" style="width:85%; text-align: center;">
   	   <tbody>
 		  
           <tr class="prespace">
-	        <th>WD <i>T</i>   [K]</th>
+	        <th>WD T   [K]</th>
 	        <th>WD Radius   [R<sub>&CirclePlus;</sub>]</th>
-	        <th>SED Prim. <i>T</i>   [K]</th>
+	        <th>SED Prim. T   [K]</th>
 	        <th>Prim. Radius   [R<sub>&#10752;</sub>]</th>
             <th>&Delta;RV<sub>max</sub>   [km s<sup>-1</sup>]</th>
   		    <th>&Delta;RV<sub>max, S/N>40</sub>   [km s<sup>-1</sup>]</th>
@@ -43,33 +44,29 @@
 	    </tbody>
       </table>
 	  
-	  <table id='astrometrics' class="myline mystripes-td ti-13" style="width:85%; margin-bottom: 25px;">
+	  <table id='astrometrics' class="myline mystripes-td ti-13 mb-25" style="width:85%; text-align: center;">
 		<tbody>
 		  <tr class="prespace">
-  	        <th>RA</th>
-  	        <th>Dec</th>
-  			<th>Gaia ID</th>
-  		    <th>Parallax   [mas]</th>
-            <th>&mu;<sub>RA</sub>   [mas/yr]</th>
-  		    <th>&mu;<sub>Dec</sub>   [mas/yr]</th>
-  		    <th>Bailer-Jones <i>d</i>   [pc]</th>
+  			<th>Gaia EDR3 ID</th>
+  		    <th>EDR3 Parallax   [mas]</th>
+            <th>EDR3 &mu;<sub>RA</sub>   [mas/yr]</th>
+  		    <th>EDR3 &mu;<sub>Dec</sub>   [mas/yr]</th>
+  		    <th>EDR3 Bailer-Jones <i>d</i>   [pc]</th>
 		  </tr>
 		  
 	      <tr>
-			<td>{{allStar.0.RA}}</td>
-			<td>{{allStar.0.Dec}}</td>
-			<td>{{allStar.0.Gaia_ID}}</td>
-			<td>{{allStar.0.Gaia_para|floatformat:"-2"}}</td>
-			<td>{{allStar.0.Gaia_pmra|floatformat:"-2"}}</td>
-			<td>{{allStar.0.Gaia_pmdec|floatformat:"-2"}}</td>
-			<td>{{allStar.0.Gaia_BJd|floatformat:"-1"}}</td>
+			<td>{{allStar.0.Gaia_EDR3_ID}}</td>
+			<td>{{allStar.0.Gaia_EDR3_para|floatformat:"-2"}}</td>
+			<td>{{allStar.0.Gaia_EDR3_pmra|floatformat:"-2"}}</td>
+			<td>{{allStar.0.Gaia_EDR3_pmdec|floatformat:"-2"}}</td>
+			<td>{{allStar.0.Gaia_EDR3_BJd|floatformat:"-1"}}</td>
 		  </tr>
 		  
 		</tbody>
 	  </table>
 		  
 	  
-	  <table id='photometry' class="myline mystripes-td ti-13" style="width:85%; margin-bottom: 50px;">
+	  <table id='photometry' class="myline mystripes-td ti-13 mb-50" style="width:85%; text-align: center;">
 		<tbody>
 		  <tr class="prespace">
 		  
@@ -83,9 +80,9 @@
           </tr>
 		  
 	      <tr>
-		    <td>{{allStar.0.Gaia_bp|floatformat:"-2"}}</td>
-			<td>{{allStar.0.Gaia_G|floatformat:"-2"}}</td>
-			<td>{{allStar.0.Gaia_rp|floatformat:"-2"}}</td>
+		    <td>{{allStar.0.Gaia_EDR3_bp|floatformat:"-2"}}</td>
+			<td>{{allStar.0.Gaia_EDR3_G|floatformat:"-2"}}</td>
+			<td>{{allStar.0.Gaia_EDR3_rp|floatformat:"-2"}}</td>
 			<td>{{allStar.0.J|floatformat:"-2"}}</td>
 			<td>{{allStar.0.H|floatformat:"-2"}}</td>
 			<td>{{allStar.0.K|floatformat:"-2"}}</td>
@@ -94,33 +91,49 @@
 		</tbody>
 	  </table>
 	  
-	   <h6 style="margin-top: 10px; margin-bottom: -20px"> All allStar Entries and Their Associated allVisit Entries:</h6>
+	   <h6 class="mt-10" style="margin-bottom: -20px"> All allStar Entries and Their Associated allVisit Entries:</h6>
 	  {% for i in allStar %}
 		
-		<table id='apogee_basics' class="myline mystripes-td ti-13" style="width:100%; margin-top: 50px; margin-bottom: 18px;">
+		<table id='apogee_basics' class="myline mystripes-td ti-14 mt-50" style="width:95%; text-align: center;">
 		  <tbody>
   	        <tr class="prespace">
-		      <th>Field</th>
+    	      <th>RA</th>
+    	      <th>Dec</th>
+			  <th>Field</th>
 			  <th>Loc ID</th>
               <th>Telescope</th>
 		      <th>S/N</th>
 		      <th>&chi;<sup>2</sup></th>
-			  <th>Teff   [K]</th>
-			  <th>log(g)</th>
-	          <th>vsin(i)   [km s<sup>-1</sup>]</th>
-			  <th>[Fe/H]</th>
-			  <th>[M/H]</th>
-			  <th>[&alpha;/Fe]</th>
   	        </tr>
 		    <tr>
+  			  <td>{{i.RA}}</td>
+  			  <td>{{i.Dec}}</td>
 			  <td>{{i.field}}</td>
 			  <td>{{i.LocID}}</td>
 			  <td>{{i.telescope}}</td>
 			  <td>{{i.SNR|floatformat:"0"}}</td>
 			  <td>{{i.chi2|floatformat:"-1"}}</td>
-		      <td>{{i.Teff|floatformat:"0g"}}</td>
-			  <td>{{i.logg|floatformat:"-2"}}</td>
+			</tr>
+			
+            <tr class="space">
+  		  </tr>
+			
+  	        <tr class="prespace">
+			  <th>cal T<sub>eff</sub>   [K]</th>
+			  <th>cal log(g)</th>
+	          <th>vsin(i)   [km s<sup>-1</sup>]</th>
+			  <th>uncal T<sub>eff</sub>   [K]</th>
+			  <th>uncal log(g)</th>
+			  <th>[Fe/H]</th>
+			  <th>[M/H]</th>
+			  <th>[&alpha;/Fe]</th>
+  	        </tr>
+		    <tr>
+		      <td>{{i.Teff_cal|floatformat:"0g"}}</td>
+			  <td>{{i.logg_cal|floatformat:"-2"}}</td>
 			  <td>{{i.vsini|floatformat:"-1"}}</td>
+		      <td>{{i.Teff_uncal|floatformat:"0g"}}</td>
+			  <td>{{i.logg_uncal|floatformat:"-2"}}</td>
 			  <td>{{i.Fe_H|floatformat:"-2"}}</td>
 			  <td>{{i.M_H|floatformat:"-2"}}</td>
 			  <td>{{i.alpha_Fe|floatformat:"-2"}}</td>
@@ -129,7 +142,7 @@
 		  </tbody>
 		 </table>
 		  
-	 <table id='apogee_chems' class="myline mystripes-td ti-12" style="width:95%; margin-bottom: 18px;">
+	 <table id='apogee_chems' class="myline mystripes-td ti-12 mt-30 mb-30" style="width:95%; text-align: center;">
   	  <tbody>
 		  
         <tr>
@@ -200,7 +213,7 @@
 	  </tbody>
      </table>
 	 
-	 <table id='apogee_visits' class="visstyle rounded ti-12" style="width:95%; margin-bottom: 20px;">
+	 <table id='apogee_visits' class="visstyle rounded ti-12 mb-20" style="width:80%;">
   	  <tbody>
 	    <tr>
 		  <th><u>Field</u></th>
@@ -242,6 +255,8 @@
 	{% endfor %}
 	  
 	</div>
+	
+	
   
   
 {% endblock %}

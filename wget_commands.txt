@@ -64,3 +64,24 @@ Visit file failed to download: 2M14062615+3050475  apVisit-dr17-56430-2M14062615
 Visit file failed to download: 2M00421454-1148176  apVisit-dr17-56565-2M00421454-1148176.fits
 Visit file failed to download: 2M01580327+4938338  apVisit-dr17-56541-2M01580327+4938338.fits
 Visit file failed to download: 2M14143559+1358313  apVisit-dr17-56686-2M14143559+1358313.fits
+
+
+12/14/23: Identified that all these stars were apo1m. The file structure isn't quite the same as the 2.5m scopes (telescope/field/MJD... rather than the standard telescope/field/plate/MJD...) so my written out visit spectra file paths were incorrect for just these stars. I updated the Website Files.ipynb cell creating "wdbin_apogee_visspec_files.csv" to account for this, and then ran the wget command just for these 15 visits. All 15 files downloaded without issue then:
+
+wget -r -i wdbinsite/wdbinsite/static/files/wdbin_apogee_visspec_files_apo1m.csv -B https://data.sdss.org/sas/dr17/apogee/spectro/redux/dr17/visit/ -nH
+
+Moved file: apVisit-dr17-56328-2M15232606-0636377.fits
+Moved file: apVisit-dr17-56414-2M15232606-0636377.fits
+Moved file: apVisit-dr17-57426-2M14163429-2145500.fits
+Moved file: apVisit-dr17-56339-2M11143340+5256487.fits
+Moved file: apVisit-dr17-56566-2M01223405-0348010.fits
+Moved file: apVisit-dr17-56310-2M14041455-0522530.fits
+Moved file: apVisit-dr17-56605-2M02543883-0519509.fits
+Moved file: apVisit-dr17-56331-2M10271222+1119016.fits
+Moved file: apVisit-dr17-56568-2M18321878+6746365.fits
+Moved file: apVisit-dr17-56331-2M14062615+3050475.fits
+Moved file: apVisit-dr17-56334-2M14062615+3050475.fits
+Moved file: apVisit-dr17-56430-2M14062615+3050475.fits
+Moved file: apVisit-dr17-56565-2M00421454-1148176.fits
+Moved file: apVisit-dr17-56541-2M01580327+4938338.fits
+Moved file: apVisit-dr17-56686-2M14143559+1358313.fits
